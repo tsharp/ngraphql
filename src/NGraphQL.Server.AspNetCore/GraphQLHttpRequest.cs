@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json.Linq;
+﻿using Microsoft.AspNetCore.Http;
 
 using NGraphQL.Server.Execution;
 
@@ -13,7 +8,6 @@ namespace NGraphQL.Server.AspNetCore {
     public HttpContext HttpContext;
     public string HttpMethod;
     public HttpContentType ContentType;
-
     public GraphQLRequest Request;
     public RequestContext RequestContext;
   }
@@ -23,5 +17,4 @@ namespace NGraphQL.Server.AspNetCore {
     Json,
     GraphQL,
   }
-
 }
