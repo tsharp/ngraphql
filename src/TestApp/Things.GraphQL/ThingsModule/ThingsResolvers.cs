@@ -15,7 +15,6 @@ namespace Things.GraphQL {
     ThingsApp _app;
 
     void IResolverClass.BeginRequest(IRequestContext context) {
-      _app = (ThingsApp) context.App;
     }
 
     public void EndRequest(IRequestContext context) {

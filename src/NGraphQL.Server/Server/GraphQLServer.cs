@@ -17,7 +17,6 @@ using NGraphQL.Utilities;
 namespace NGraphQL.Server {
 
   public class GraphQLServer {
-    public readonly object App; 
     public readonly GraphQLServerSettings Settings;
     public readonly IList<GraphQLModule> Modules = new List<GraphQLModule>();
     public readonly CoreModule CoreModule;
@@ -30,8 +29,7 @@ namespace NGraphQL.Server {
 
     public GraphQLApiModel Model { get; internal set; }
 
-    public GraphQLServer(object app, GraphQLServerSettings settings = null) {
-      App = app; 
+    public GraphQLServer(GraphQLServerSettings settings = null) {
       Settings = settings ?? new GraphQLServerSettings();
       CoreModule = new CoreModule();
       IntrospectionModule = new IntrospectionModule();

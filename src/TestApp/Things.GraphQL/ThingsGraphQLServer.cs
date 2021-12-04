@@ -7,9 +7,7 @@ using NGraphQL.Server;
 namespace Things.GraphQL {
   public class ThingsGraphQLServer: GraphQLServer {
 
-    public ThingsApp ThingsApp => (ThingsApp)base.App; 
-
-    public ThingsGraphQLServer(ThingsApp app, GraphQLServerSettings settings): base(app, settings) {
+    public ThingsGraphQLServer(GraphQLServerSettings settings): base(settings) {
       // Register all modules
       this.RegisterModules(new ThingsGraphQLModule());
       // handle specific exceptions if needed and convert them into GraphQL errors. 
