@@ -27,14 +27,14 @@ namespace NGraphQL.Tests {
     public static RequestContext LastRequestContext;
 
     public static void Init() {
-      if(ThingsServer != null)
+      if (ThingsServer != null)
         return;
-      if(File.Exists(LogFilePath))
+      if (File.Exists(LogFilePath))
         File.Delete(LogFilePath);
       try {
         var thingsBizApp = new ThingsApp();
         var stt = new GraphQLServerSettings() { Options = GraphQLServerOptions.DefaultDev };
-        ThingsServer = new ThingsGraphQLServer(thingsBizApp, stt);
+        ThingsServer = new ThingsGraphQLServer(stt);
         // Add logging hook
         ThingsServer.Events.RequestCompleted += ThingsServer_RequestCompleted;
       } catch (ServerStartupException sEx) {
@@ -47,7 +47,7 @@ namespace NGraphQL.Tests {
       File.WriteAllText("_thingsApiSchema.txt", schemaDoc);
 
       _serializerSettings = new JsonSerializerSettings() {
-        Formatting = Formatting.Indented, 
+        Formatting = Formatting.Indented,
         ContractResolver = new DefaultContractResolver() { NamingStrategy = new CamelCaseNamingStrategy() }
       };
     }
@@ -72,7 +72,7 @@ Testing: {descr}
     }
 
     public static void LogCompletedRequest(RequestContext context) {
-      if(!LogEnabled)
+      if (!LogEnabled)
         return;
       var mx = context.Metrics;
       var jsonRequest = JsonConvert.SerializeObject(context.RawRequest, _serializerSettings);
@@ -86,13 +86,13 @@ Request:
 Response:
 {jsonResponse}
 
-// execution time: {mx.Duration.TotalMilliseconds} ms, request from cache: {mx.FromCache}, threads: {mx.ExecutionThreadCount}, " + 
+// execution time: {mx.Duration.TotalMilliseconds} ms, request from cache: {mx.FromCache}, threads: {mx.ExecutionThreadCount}, " +
 $@" resolver calls: {mx.ResolverCallCount}, output objects: {mx.OutputObjectCount}
 ----------------------------------------------------------------------------------------------------------------------------------- 
 
 ";
       LogText(text);
-      foreach(var ex in context.Exceptions)
+      foreach (var ex in context.Exceptions)
         LogText(ex.ToText());
     }
 
@@ -113,8 +113,8 @@ Failed request:
       File.AppendAllText(LogFilePath, text);
     }
 
-    public static async Task<GraphQLResponse> ExecuteAsync(string query, IDictionary<string, object> variables = null,bool throwOnError = true) {
-      GraphQLResponse resp = null;       
+    public static async Task<GraphQLResponse> ExecuteAsync(string query, IDictionary<string, object> variables = null, bool throwOnError = true) {
+      GraphQLResponse resp = null;
       try {
         var req = new GraphQLRequest() { Query = query, Variables = variables };
         resp = await ThingsServer.ExecuteAsync(req);
@@ -122,7 +122,7 @@ Failed request:
           var errText = resp.GetErrorsAsText();
           Debug.WriteLine("Errors: \r\n" + errText);
         }
-      } catch(Exception ex) {
+      } catch (Exception ex) {
         TestEnv.LogException(query, ex);
         throw;
       }
@@ -141,7 +141,7 @@ Failed request:
       } catch (Exception ex) {
         var errText = "FATAL: " + ex.ToString();
         LogText(errText);
-        return errText; 
+        return errText;
       }
     }
 

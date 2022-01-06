@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29709.97
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99BB55EA-1963-40D6-B085-2DEF6DAA5222}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,9 +26,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApp", "TestApp", "{8A2E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Things.App", "TestApp\Things.App\Things.App.csproj", "{5C60ABD0-BA7D-4182-9469-F69424C4903E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Things.GraphQL.HttpServer", "TestApp\Things.GraphQL.HttpServer\Things.GraphQL.HttpServer.csproj", "{497D8387-160E-411E-9960-4440E7642CDE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Things.GraphQL", "TestApp\Things.GraphQL\Things.GraphQL.csproj", "{3DA68651-1D1F-4538-9D5F-B89F60248D6C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Things.Adv.Api", "Things.Adv.Api\Things.Adv.Api.csproj", "{C6B795BE-8D8F-408E-A0C5-471BA38268E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGraphQL.Data", "NGraphQL.Data\NGraphQL.Data.csproj", "{C43D808E-BD58-4B55-9505-F6DDB190CCB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,14 +66,18 @@ Global
 		{5C60ABD0-BA7D-4182-9469-F69424C4903E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C60ABD0-BA7D-4182-9469-F69424C4903E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C60ABD0-BA7D-4182-9469-F69424C4903E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{497D8387-160E-411E-9960-4440E7642CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{497D8387-160E-411E-9960-4440E7642CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{497D8387-160E-411E-9960-4440E7642CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{497D8387-160E-411E-9960-4440E7642CDE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3DA68651-1D1F-4538-9D5F-B89F60248D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3DA68651-1D1F-4538-9D5F-B89F60248D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DA68651-1D1F-4538-9D5F-B89F60248D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DA68651-1D1F-4538-9D5F-B89F60248D6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6B795BE-8D8F-408E-A0C5-471BA38268E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6B795BE-8D8F-408E-A0C5-471BA38268E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6B795BE-8D8F-408E-A0C5-471BA38268E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6B795BE-8D8F-408E-A0C5-471BA38268E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C43D808E-BD58-4B55-9505-F6DDB190CCB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43D808E-BD58-4B55-9505-F6DDB190CCB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C43D808E-BD58-4B55-9505-F6DDB190CCB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C43D808E-BD58-4B55-9505-F6DDB190CCB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,8 +86,8 @@ Global
 		{3D323D68-BF4D-4AF9-98A5-6799264F37F9} = {CA7361EF-78F4-4367-953F-28A1CDEDBB35}
 		{53D550B1-5D5D-41FB-A333-37B661DEC728} = {CA7361EF-78F4-4367-953F-28A1CDEDBB35}
 		{5C60ABD0-BA7D-4182-9469-F69424C4903E} = {8A2E356C-5ADB-49A4-B709-703FEB5B7D70}
-		{497D8387-160E-411E-9960-4440E7642CDE} = {8A2E356C-5ADB-49A4-B709-703FEB5B7D70}
 		{3DA68651-1D1F-4538-9D5F-B89F60248D6C} = {8A2E356C-5ADB-49A4-B709-703FEB5B7D70}
+		{C6B795BE-8D8F-408E-A0C5-471BA38268E3} = {8A2E356C-5ADB-49A4-B709-703FEB5B7D70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {487D2E61-A748-4092-A70A-6B3548627DE0}

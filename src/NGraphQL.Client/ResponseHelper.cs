@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json.Linq;
-using NGraphQL.Client.Serialization;
-using NGraphQL.Model;
+using System.Text.Json;
+using NGraphQL.Data;
 using NGraphQL.Utilities;
 
 namespace NGraphQL.Client {
@@ -28,45 +27,52 @@ namespace NGraphQL.Client {
       return text;
     }
 
-    internal static JObject GetDataJObject(this ServerResponse response) {
+    internal static JsonElement? GetDataJElement(this ServerResponse response) {
       // read 'data' object as JObject 
-      if (response.TopFields.TryGetValue("data", out var data))
-        return data as JObject;
-      return null;
+      if (!response.TopFields.TryGetValue("data", out var data)) {
+        return null;
+      }
+
+      return data;
     }
 
     public static T GetTopField<T>(this ServerResponse response, string name) {
-      var dataJObj = response.GetDataJObject();
-      if (dataJObj == null)
+      var dataJElement = response.GetDataJElement();
+
+      if (!dataJElement.HasValue) {
         throw new Exception("'data' element was not returned by the request. See errors in response.");
-      if (!dataJObj.TryGetValue(name, out var jtoken))
+      }
+
+      if (!dataJElement.Value.TryGetProperty(name, out var jElement)) {
         throw new Exception($"Field '{name}' not found in response.");
+      }
+
       var type = typeof(T);
       var nullable = ReflectionHelper.CheckNullable(ref type);
-      if (jtoken == null) {
-        if (nullable)
-          return (T)(object)null;
-        throw new Exception($"Field '{name}': cannot convert null value to type {typeof(T)}.");
+
+      if (jElement.ValueKind == JsonValueKind.Null) {
+        if (!nullable) {
+          throw new Exception($"Field '{name}': cannot convert null value to type {typeof(T)}.");
+        }
+
+        return (T)(object)null;
       }
-      if (jtoken is JValue jv && !type.IsValueType)
-        return (T)jv.Value;
-      // deserialize as type
-      var res = jtoken.ToObject<T>(ClientSerializers.TypedJsonSerializer);
-      return res;
+
+      return jElement.ToObject<T>();
     }
 
     public static TEnum ToEnum<TEnum>(object value) {
-      var enumType = typeof(TEnum);
-      if (!enumType.IsEnum)
-        throw new Exception($"Invalid type argument '{enumType}', expected enum.");
-      var handler = KnownEnumTypes.GetEnumHandler(enumType);
-      if (handler.IsFlagSet) {
-        if (!(value is IList<string> stringList))
-          stringList = ((IList)value).OfType<string>().ToList(); 
-        return (TEnum) handler.ConvertStringListToFlagsEnumValue(stringList);
-      } else
-        return (TEnum) handler.ConvertStringToEnumValue((string)value);
+      throw new NotImplementedException();
+    //  var enumType = typeof(TEnum);
+    //  if (!enumType.IsEnum)
+    //    throw new Exception($"Invalid type argument '{enumType}', expected enum.");
+    //  var handler = KnownEnumTypes.GetEnumHandler(enumType);
+    //  if (handler.IsFlagSet) {
+    //    if (!(value is IList<string> stringList))
+    //      stringList = ((IList)value).OfType<string>().ToList();
+    //    return (TEnum)handler.ConvertStringListToFlagsEnumValue(stringList);
+    //  } else
+    //    return (TEnum)handler.ConvertStringToEnumValue((string)value);
     }
-
   }
 }

@@ -4,9 +4,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 
 namespace NGraphQL.Client {
   using IDict = IDictionary<string, object>;
@@ -18,8 +15,8 @@ namespace NGraphQL.Client {
     public event EventHandler<RequestStartingEventArgs> RequestStarting;
     public event EventHandler<RequestCompletedEventArgs> RequestCompleted;
 
-    string _endpointUrl; 
-    HttpClient _client;
+    private readonly string _endpointUrl;
+    private readonly HttpClient _client;
 
     public GraphQLClient(string endpointUrl) {
       _endpointUrl = endpointUrl;
@@ -40,7 +37,7 @@ namespace NGraphQL.Client {
       DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(scheme, headerValue);
     }
     public void ClearAuthorizationHeader() {
-      DefaultRequestHeaders.Authorization = null; 
+      DefaultRequestHeaders.Authorization = null;
     }
 
     #endregion

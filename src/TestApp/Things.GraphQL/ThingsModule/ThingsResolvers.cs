@@ -12,10 +12,9 @@ using Things.GraphQL.Types;
 namespace Things.GraphQL {
 
   public class ThingsResolvers : IResolverClass {
-    ThingsApp _app;
+    ThingsApp _app = new ThingsApp();
 
     void IResolverClass.BeginRequest(IRequestContext context) {
-      _app = (ThingsApp) context.App;
     }
 
     public void EndRequest(IRequestContext context) {

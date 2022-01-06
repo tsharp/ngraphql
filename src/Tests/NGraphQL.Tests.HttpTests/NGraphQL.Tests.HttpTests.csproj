@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +17,6 @@
     <ProjectReference Include="..\..\NGraphQL.Server.AspNetCore\NGraphQL.Server.AspNetCore.csproj" />
     <ProjectReference Include="..\..\NGraphQL.Server\NGraphQL.Server.csproj" />
     <ProjectReference Include="..\..\NGraphQL\NGraphQL.csproj" />
-    <ProjectReference Include="..\..\TestApp\Things.GraphQL.HttpServer\Things.GraphQL.HttpServer.csproj" />
     <ProjectReference Include="..\..\TestApp\Things.GraphQL\Things.GraphQL.csproj" />
   </ItemGroup>
 
