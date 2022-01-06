@@ -15,12 +15,10 @@
 
     <ItemGroup>
         <Compile Remove="GraphQLHttpServer.cs" />
-        <Compile Remove="JsonVariablesDeserializer.cs" />
     </ItemGroup>
 
     <ItemGroup>
         <None Include="GraphQLHttpServer.cs" />
-        <None Include="JsonVariablesDeserializer.cs" />
     </ItemGroup>
 
     <ItemGroup>

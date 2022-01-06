@@ -7,11 +7,20 @@ using NGraphQL.Data;
 
 namespace NGraphQL.Server.AspNetCore {
   public class GraphQLMiddleware : MiddlewareBase {
-    private GraphQLServer server;
-
+    // FIXME: This should probably be a singleton value?
+    private GraphQLServer server = new GraphQLServer();
+    private JsonVariablesDeserializer variablesDeserializer = new JsonVariablesDeserializer();
 
     public GraphQLMiddleware(RequestDelegate next) : base(next) {
-      server = new GraphQLServer();
+      server.Events.RequestPrepared += OnRequestPrepared;
+    }
+
+    private void OnRequestPrepared(object sender, GraphQLServerEventArgs e) {
+      if (e.RequestContext.Operation.Variables.Count == 0) {
+        return;
+      }
+
+      variablesDeserializer.PrepareRequestVariables(e.RequestContext);
     }
 
     protected override Task HandleRequest(HttpContext context) {
