@@ -1,29 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\Version.proj" />
+    <Import Project="..\Version.proj" />
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Description>GraphQL Client</Description>
+        <LangVersion>latest</LangVersion>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\NGraphQL\NGraphQL.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\NGraphQL.Data\NGraphQL.Data.csproj" />
+        <ProjectReference Include="..\NGraphQL\NGraphQL.csproj" />
+    </ItemGroup>
 
     <PropertyGroup>
         <DocumentationFile>bin\NGraphQL.Client.xml</DocumentationFile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <NoWarn>1701;1702;1591</NoWarn>
+        <NoWarn>1701;1702;1591</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <NoWarn>1701;1702;1591</NoWarn>
+        <NoWarn>1701;1702;1591</NoWarn>
     </PropertyGroup>
 
 

@@ -1,26 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>NGraphQL</RootNamespace>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>NGraphQL</RootNamespace>
+        <LangVersion>latest</LangVersion>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <DocumentationFile>bin\NGraphQL.xml</DocumentationFile>
-  </PropertyGroup>
+    <PropertyGroup>
+        <DocumentationFile>bin\NGraphQL.xml</DocumentationFile>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;1591</NoWarn>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <NoWarn>1701;1702;1591</NoWarn>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702;1591</NoWarn>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <NoWarn>1701;1702;1591</NoWarn>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Server\**" />
-    <EmbeddedResource Remove="Server\**" />
-    <None Remove="Server\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="Server\**" />
+        <EmbeddedResource Remove="Server\**" />
+        <None Remove="Server\**" />
+    </ItemGroup>
 
 </Project>

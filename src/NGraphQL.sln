@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Things.GraphQL", "TestApp\T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Things.Adv.Api", "Things.Adv.Api\Things.Adv.Api.csproj", "{C6B795BE-8D8F-408E-A0C5-471BA38268E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGraphQL.Data", "NGraphQL.Data\NGraphQL.Data.csproj", "{C43D808E-BD58-4B55-9505-F6DDB190CCB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{C6B795BE-8D8F-408E-A0C5-471BA38268E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6B795BE-8D8F-408E-A0C5-471BA38268E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6B795BE-8D8F-408E-A0C5-471BA38268E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C43D808E-BD58-4B55-9505-F6DDB190CCB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43D808E-BD58-4B55-9505-F6DDB190CCB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C43D808E-BD58-4B55-9505-F6DDB190CCB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C43D808E-BD58-4B55-9505-F6DDB190CCB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

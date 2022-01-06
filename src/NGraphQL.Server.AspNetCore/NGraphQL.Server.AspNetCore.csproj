@@ -14,16 +14,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="GraphQLHttpServer.cs" />
-      <Compile Remove="JsonVariablesDeserializer.cs" />
+        <Compile Remove="GraphQLHttpServer.cs" />
+        <Compile Remove="JsonVariablesDeserializer.cs" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="GraphQLHttpServer.cs" />
-      <None Include="JsonVariablesDeserializer.cs" />
+        <None Include="GraphQLHttpServer.cs" />
+        <None Include="JsonVariablesDeserializer.cs" />
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\NGraphQL.Data\NGraphQL.Data.csproj" />
         <ProjectReference Include="..\NGraphQL.Server\NGraphQL.Server.csproj" />
         <ProjectReference Include="..\NGraphQL\NGraphQL.csproj" />
     </ItemGroup>

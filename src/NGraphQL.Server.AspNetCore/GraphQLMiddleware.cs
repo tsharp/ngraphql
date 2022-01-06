@@ -1,9 +1,9 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using NGraphQL.Data;
 
 namespace NGraphQL.Server.AspNetCore {
   public class GraphQLMiddleware : MiddlewareBase {
@@ -25,7 +25,7 @@ namespace NGraphQL.Server.AspNetCore {
 
       var isGet = HttpMethods.IsGet(context.Request.Method);
 
-      if(isGet && options.AllowGetRequests) {
+      if (isGet && options.AllowGetRequests) {
         return HandleGet(context);
       }
 
@@ -41,7 +41,7 @@ namespace NGraphQL.Server.AspNetCore {
       var request = await context.Request.Body.DeserializeFromJsonStreamAsync<GraphQLRequest>(context.RequestAborted);
       var requestContext = server.CreateRequestContext(request, context.RequestAborted, context.User, null, context);
       await server.ExecuteRequestAsync(requestContext);
-      
+
       if (requestContext.Response.Errors != null && requestContext.Response.Errors.Any()) {
         context.Response.StatusCode = 400;
       }
